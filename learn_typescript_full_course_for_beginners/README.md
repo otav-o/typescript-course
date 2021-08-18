@@ -80,4 +80,8 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
       let someProp: string | number | null | undefined | string[] | object; // bad code
       ```
 
-      
+  - Type aliases
+
+    - Types and Interfaces always start with capital letter  
+
+    

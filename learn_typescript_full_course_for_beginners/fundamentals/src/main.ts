@@ -45,10 +45,19 @@ const user3: UserInterface = {
 
 console.log(user3.getMessage());
 
+type ID = string; // alias
+type PopularTag = string;
+type MaybePopularTag = PopularTag | null; // we do not have to write this union command everywhere
+
 interface UserInterface2 {
+  id: ID; // same as id: string
   name: string;
   surname: string;
 }
+
+const popularTags: PopularTag[] = ['dragon', 'coffee']; // could be :string[], but it is clearer to understand using alias
+
+const dragonsTag: MaybePopularTag = "Hi";
 
 let username: string = "alex";
 

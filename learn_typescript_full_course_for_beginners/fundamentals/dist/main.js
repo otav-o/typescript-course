@@ -27,6 +27,8 @@ var user3 = {
     }
 };
 console.log(user3.getMessage());
+var popularTags = ['dragon', 'coffee']; // could be :string[], but it is clearer to understand using alias
+var dragonsTag = "Hi";
 var username = "alex";
 var pageName = "1"; // union: operator to combine types. Means OR
 var errorMessage = null;
