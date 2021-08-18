@@ -14,7 +14,8 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
 - `npx tsc main.ts`
 
-  - generates a js file (transpiled to js ES3)
+  - generates a js file (transpiled to js ES3 - works in every browser)
+  - that's why const and let become var after generation
 
 - `npx tsc main.ts -w`
 
