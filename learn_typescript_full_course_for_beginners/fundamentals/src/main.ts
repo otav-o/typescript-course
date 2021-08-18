@@ -44,3 +44,18 @@ const user3: UserInterface = {
 }
 
 console.log(user3.getMessage());
+
+interface UserInterface2 {
+  name: string;
+  surname: string;
+}
+
+let username: string = "alex";
+
+let pageName: string | number = "1"; // union: operator to combine types. Means OR
+
+let errorMessage:  string | null = null;
+
+let newUser: UserInterface2 | null = null;
+
+let someProp: string | number | null | undefined | string[] | object; // bad code

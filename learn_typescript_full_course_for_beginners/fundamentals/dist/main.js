@@ -27,3 +27,8 @@ var user3 = {
     }
 };
 console.log(user3.getMessage());
+var username = "alex";
+var pageName = "1"; // union: operator to combine types. Means OR
+var errorMessage = null;
+var newUser = null;
+var someProp; // bad code

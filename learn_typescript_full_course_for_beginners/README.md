@@ -41,16 +41,22 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
   - There is no entity in JS
 
   - ```typescript
-    interface User {
-      name: String;
-      age: number;
+    interface UserInterface { // or IUser
+      name: String,
+      age: number,
       email?: String, // non-mandatory property
+      getMessage(): string,
     }
     
-    const user: User = {
+    const user3: UserInterface = {
       name: "Jack",
       age: 30,
+      getMessage() {
+        return "Hello " + name;
+      }
     }
+    
+    console.log(user3.getMessage());
     ```
 
   - ```typescript
@@ -60,4 +66,18 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
     }
     ```
 
-    
+- Union & Type alias
+
+  - Union
+
+    - Operator to combine types. One type OR another.
+
+    - ```ts
+      let errorMessage:  string | null = null;
+      
+      let newUser: UserInterface2 | null = null;
+      
+      let someProp: string | number | null | undefined | string[] | object; // bad code
+      ```
+
+      
