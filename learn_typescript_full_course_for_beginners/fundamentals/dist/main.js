@@ -69,3 +69,13 @@ var s3 = vUnknown;
 var pageNumber = '1';
 // let numericPageNumber: number = pageNumber as number;
 var numericPageNumber2 = pageNumber; // type assertion
+// --------------------------------------------------------------
+// TYPESCRIPT AND DOM
+var genericElement = document.querySelector('.foo'); // type: Element. Same properties available to all DOM elements
+console.log('Generic element', genericElement.value); // never do this!
+var specificElement = document.querySelector('.foo');
+console.log('specificElement', specificElement.value); // HTMLInputElement has value property
+specificElement.addEventListener('Blur', function (event) {
+    var target = event.target;
+    console.log(target.value);
+}); // Event is also the most generic possible in events

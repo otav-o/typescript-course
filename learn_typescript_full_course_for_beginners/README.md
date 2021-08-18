@@ -124,7 +124,7 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
       let s2: string = vUnknown as string; // correct
       ```
 
-  - Type Assertion
+  - Type Assertion: keyword `as`
 
     - ```ts
       let s3: string = vUnknown as string;
@@ -132,6 +132,16 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
       let numericPageNumber2: number = pageNumber as unknown as number; 
       ```
 
-      
+- Typescript working with DOM
+
+  - Typescript does not know anything about markup - usage is only with types in code.
+
+  - ```ts
+    const specificElement = document.querySelector('.foo') as HTMLInputElement;
+    
+    const target = event.target as HTMLInputElement;
+    ```
+
+    
 
   
