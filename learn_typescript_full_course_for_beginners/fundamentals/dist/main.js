@@ -21,6 +21,9 @@ var user2 = {
 };
 var user3 = {
     name: "Jack",
-    age: 30
+    age: 30,
+    getMessage: function () {
+        return "Hello " + name;
+    }
 };
-console.log(user3.email);
+console.log(user3.getMessage());

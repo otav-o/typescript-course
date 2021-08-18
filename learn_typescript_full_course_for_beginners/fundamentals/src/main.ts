@@ -28,15 +28,19 @@ const user2: {name: string, age: number} = {
   age: 10,
 }
 
-interface User {
+interface UserInterface { // or IUser (avoids name collision with class User)
   name: String,
   age: number,
   email?: String, // non-mandatory property
+  getMessage(): string,
 }
 
-const user3: User = {
+const user3: UserInterface = {
   name: "Jack",
   age: 30,
+  getMessage() {
+    return "Hello " + name;
+  }
 }
 
-console.log(user3.email);
+console.log(user3.getMessage());
