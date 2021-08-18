@@ -13,6 +13,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var a = "1";
 console.log('aaa', a);
 // let and const become var in js because transpiler generates ES3 code.
@@ -62,7 +73,7 @@ foo = undefined;
 // ANY: turns off typescript type check
 // Should be avoided
 var foo2 = "foo";
-console.log(foo2.hi());
+// console.log(foo2.hi());
 // --------------------------------------------------------------
 // NEVER: function that does not reach its end
 var doSomething2 = function () {
@@ -76,7 +87,7 @@ var vUnknown = 10;
 var s1 = vAny; // any: typescript doesnt care and you can assign any value
 // let s2: string = vUnknown; // type unknown is not assignable to type string (without as);
 // We can't assign unknown to another type (but any so).
-console.log(vAny.foo());
+// console.log(vAny.foo());
 // console.log(vUnknown.foo());
 // --------------------------------------------------------------
 // TYPE ASSERTION (convertion)
@@ -85,15 +96,15 @@ var pageNumber = '1';
 // let numericPageNumber: number = pageNumber as number;
 var numericPageNumber2 = pageNumber; // type assertion
 // --------------------------------------------------------------
-// TYPESCRIPT AND DOM
-var genericElement = document.querySelector('.foo'); // type: Element. Same properties available to all DOM elements
-console.log('Generic element', genericElement.value); // never do this!
-var specificElement = document.querySelector('.foo');
-console.log('specificElement', specificElement.value); // HTMLInputElement has value property
-specificElement.addEventListener('Blur', function (event) {
-    var target = event.target;
-    console.log(target.value);
-}); // Event is also the most generic possible in events
+// // TYPESCRIPT AND DOM
+// const genericElement = document.querySelector('.foo'); // type: Element. Same properties available to all DOM elements
+// console.log('Generic element', (genericElement as any).value); // never do this!
+// const specificElement = document.querySelector('.foo') as HTMLInputElement;
+// console.log('specificElement', specificElement.value); // HTMLInputElement has value property
+// specificElement.addEventListener('Blur', (event) => {
+//   const target = event.target as HTMLInputElement;
+//   console.log(target.value);
+// }); // Event is also the most generic possible in events
 // --------------------------------------------------------------
 // CLASSES 
 var User = /** @class */ (function () {
@@ -125,3 +136,33 @@ var Admin = /** @class */ (function (_super) {
 }(User));
 var admin = new Admin('Name', 'Surname');
 console.log(admin.unchangableName);
+// --------------------------------------------------------------
+// GENERICS
+// const addId = <T>(obj: T) => {
+var addId = function (obj) {
+    var id = Math.random().toString(16);
+    return __assign(__assign({}, obj), { id: id });
+};
+var user4 = {
+    name: 'Jack'
+};
+var result = addId(user4); // explicit declarations are better to read
+var result2 = addId("foo");
+console.log("Result line 191: ", result);
+var user5 = {
+    name: "Jack",
+    data: {
+        meta: "foo"
+    }
+};
+var user6 = {
+    name: "John",
+    data: ["foo", "bar", "baz"]
+};
+var user7 = {
+    name: "John",
+    data: {
+        meta: "foo"
+    },
+    meta: "bar"
+};

@@ -146,6 +146,47 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
   - Classes are sugar around prototypes.
 
-  
+  - Pay attention to:
 
-  
+    - Visibility (public, private, protected);
+    - Readonly
+    - Static and non-static
+    - Interface implementation and inheritance extension
+
+  - ```ts
+    interface UserInterface3 {
+        getFullName(): string;
+    }
+    
+    class Admin extends User {
+        private editor: string;
+    
+        setEditor(editor: string): void {
+            this.editor = editor;
+        }
+    
+        getEditor(): string {
+            return this.editor;
+        }
+    }
+    
+    class User implements UserInterface3 {
+        private firstName: string;
+        private lastName: string;
+        readonly unchangableName: string;
+        static readonly maxAge = 50;
+    
+        constructor(firstName: string, lasName: string) {
+            this.firstName = firstName;
+            this.lastName = lasName;
+        }
+    
+        getFullName(): string {
+            return this.firstName + ' ' + this.lastName;
+        }
+    }
+    ```
+
+- Generics interfaces and functions in Typescript
+
+- 

@@ -87,7 +87,7 @@ foo = undefined;
 // ANY: turns off typescript type check
 // Should be avoided
 let foo2: any = "foo";
-console.log(foo2.hi());
+// console.log(foo2.hi());
 
 // --------------------------------------------------------------
 // NEVER: function that does not reach its end
@@ -105,7 +105,7 @@ let s1: string = vAny; // any: typescript doesnt care and you can assign any val
 // let s2: string = vUnknown; // type unknown is not assignable to type string (without as);
 // We can't assign unknown to another type (but any so).
 
-console.log(vAny.foo());
+// console.log(vAny.foo());
 // console.log(vUnknown.foo());
 
 // --------------------------------------------------------------
@@ -116,17 +116,17 @@ let pageNumber: string = '1';
 let numericPageNumber2: number = pageNumber as unknown as number; // type assertion
 
 // --------------------------------------------------------------
-// TYPESCRIPT AND DOM
-const genericElement = document.querySelector('.foo'); // type: Element. Same properties available to all DOM elements
-console.log('Generic element', (genericElement as any).value); // never do this!
+// // TYPESCRIPT AND DOM
+// const genericElement = document.querySelector('.foo'); // type: Element. Same properties available to all DOM elements
+// console.log('Generic element', (genericElement as any).value); // never do this!
 
-const specificElement = document.querySelector('.foo') as HTMLInputElement;
-console.log('specificElement', specificElement.value); // HTMLInputElement has value property
+// const specificElement = document.querySelector('.foo') as HTMLInputElement;
+// console.log('specificElement', specificElement.value); // HTMLInputElement has value property
 
-specificElement.addEventListener('Blur', (event) => {
-  const target = event.target as HTMLInputElement;
-  console.log(target.value);
-}); // Event is also the most generic possible in events
+// specificElement.addEventListener('Blur', (event) => {
+//   const target = event.target as HTMLInputElement;
+//   console.log(target.value);
+// }); // Event is also the most generic possible in events
 
 // --------------------------------------------------------------
 // CLASSES 
@@ -173,3 +173,58 @@ class Admin extends User {
 
 const admin = new Admin('Name', 'Surname');
 console.log(admin.unchangableName);
+
+// --------------------------------------------------------------
+// GENERICS
+// const addId = <T>(obj: T) => {
+const addId = <T extends Object>(obj: T) => { // T restritions
+  const id = Math.random().toString(16);
+  return {
+    ...obj,
+    id,
+  }
+}
+
+interface IUser {
+  name: string;
+}
+
+const user4: IUser = {
+  name: 'Jack',
+};
+const result = addId<IUser>(user4); // explicit declarations are better to read
+const result2 = addId<string>("foo");
+console.log("Result line 191: ", result);
+
+// Generic Interface
+
+interface UserInterface4<T> {
+  name: string;
+  data: T;
+}
+
+const user5: UserInterface4<{meta: string}> = {
+  name: "Jack",
+  data: {
+    meta: "foo",
+  },
+}
+
+const user6: UserInterface4<string[]> = {
+  name: "John",
+  data: ["foo", "bar", "baz"],
+}
+
+interface UserInterface5<T, R> {
+  name: string;
+  data: T;
+  meta: R;
+}
+
+const user7: UserInterface5<{meta: string}, string> = {
+  name: "John",
+  data: {
+    meta: "foo",
+  },
+  meta: "bar",
+}
