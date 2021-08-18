@@ -189,4 +189,50 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
 - Generics interfaces and functions in Typescript
 
-- 
+  - ```TS
+    interface UserInterface5<T, R> {
+        name: string;
+        data: T;
+        meta: R;
+    }
+    
+    const user7: UserInterface5<{meta: string}, string> = {
+        name: "John",
+        data: {
+            meta: "foo",
+        },
+        meta: "bar",
+    }
+    
+    const addId = <T extends Object>(obj: T) => { // T restrictions
+        const id = Math.random().toString(16);
+        return {
+            ...obj,
+            id,
+        }
+    }
+    ```
+
+- Enums
+
+  - ```ts
+    const statuses = {
+        notStarted: 0,
+        inProgress: 1,
+        done: 2,
+    }
+    
+    console.log(statuses.inProgress);
+    
+    enum StatusEnum {
+        NotStarted = "notStarted", // Capital letter
+        InProgress = "inProgress", // equal sign, not colon
+        Done = "done", // intializer is optional
+    }
+    console.log(StatusEnum.InProgress); // values are increased from zero when there is no assignment
+    // The main benefit is using as data type, as well as enum
+    ```
+
+    
+
+  

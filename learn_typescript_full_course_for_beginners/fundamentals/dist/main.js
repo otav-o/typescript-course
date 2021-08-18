@@ -166,3 +166,21 @@ var user7 = {
     },
     meta: "bar"
 };
+// --------------------------------------------------------------
+// ENUMS
+var statuses = {
+    notStarted: 0,
+    inProgress: 1,
+    done: 2
+};
+console.log(statuses.inProgress);
+var StatusEnum;
+(function (StatusEnum) {
+    StatusEnum["NotStarted"] = "notStarted";
+    StatusEnum["InProgress"] = "inProgress";
+    StatusEnum["Done"] = "done";
+})(StatusEnum || (StatusEnum = {}));
+console.log(StatusEnum.InProgress); // values are increased from zero when there is no assignment
+// The main benefit is using as data type, as well as enum
+var notStartedStatus = StatusEnum.NotStarted;
+notStartedStatus = StatusEnum.Done;

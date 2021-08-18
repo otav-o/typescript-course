@@ -177,7 +177,7 @@ console.log(admin.unchangableName);
 // --------------------------------------------------------------
 // GENERICS
 // const addId = <T>(obj: T) => {
-const addId = <T extends Object>(obj: T) => { // T restritions
+const addId = <T extends Object>(obj: T) => { // T restrictions
   const id = Math.random().toString(16);
   return {
     ...obj,
@@ -227,4 +227,31 @@ const user7: UserInterface5<{meta: string}, string> = {
     meta: "foo",
   },
   meta: "bar",
+}
+
+// --------------------------------------------------------------
+// ENUMS
+const statuses = {
+  notStarted: 0,
+  inProgress: 1,
+  done: 2,
+}
+
+console.log(statuses.inProgress);
+
+enum StatusEnum {
+  NotStarted = "notStarted", // Capital letter
+  InProgress = "inProgress", // equal sign, not colon
+  Done = "done", // intializer is optional
+}
+console.log(StatusEnum.InProgress); // values are increased from zero when there is no assignment
+// The main benefit is using as data type, as well as enum
+
+let notStartedStatus: StatusEnum = StatusEnum.NotStarted;
+notStartedStatus = StatusEnum.Done;
+
+// Enums and interfaces - highly recommended
+interface Task {
+  id: string;
+  status: StatusEnum;
 }
