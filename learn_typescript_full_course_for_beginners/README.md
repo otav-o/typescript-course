@@ -34,3 +34,30 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
   - `npx tsc -w`
 
+- Interfaces
+
+  - Creating objects
+
+  - There is no entity in JS
+
+  - ```typescript
+    interface User {
+      name: String;
+      age: number;
+      email?: String, // non-mandatory property
+    }
+    
+    const user: User = {
+      name: "Jack",
+      age: 30,
+    }
+    ```
+
+  - ```typescript
+    const user: {name: string, age: number} = {
+      name: "Otávio",
+      age: 20,
+    }
+    ```
+
+    
