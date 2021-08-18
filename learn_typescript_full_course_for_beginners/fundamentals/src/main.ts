@@ -10,6 +10,8 @@ const hello = "world"; // type "world"
 let hello2 = "world"; // type string
 // hello2 = true; // we can change the value only to the same type
 
+// --------------------------------------------------------------
+
 let hello3: string = "world"; // same like previous, but explicit
 
 const getFullName = (name: String, surname: String): String => {
@@ -45,6 +47,8 @@ const user3: UserInterface = {
 
 console.log(user3.getMessage());
 
+// --------------------------------------------------------------
+
 type ID = string; // alias
 type PopularTag = string;
 type MaybePopularTag = PopularTag | null; // we do not have to write this union command everywhere
@@ -68,3 +72,5 @@ let errorMessage:  string | null = null;
 let newUser: UserInterface2 | null = null;
 
 let someProp: string | number | null | undefined | string[] | object; // bad code
+
+// --------------------------------------------------------------

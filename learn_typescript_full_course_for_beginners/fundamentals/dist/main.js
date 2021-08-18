@@ -6,6 +6,7 @@ var hello = "world"; // type "world"
 // hello = "another world"; // in TS, constants are really constants and can't be changed later
 var hello2 = "world"; // type string
 // hello2 = true; // we can change the value only to the same type
+// --------------------------------------------------------------
 var hello3 = "world"; // same like previous, but explicit
 var getFullName = function (name, surname) {
     return name + " " + surname;
@@ -34,3 +35,4 @@ var pageName = "1"; // union: operator to combine types. Means OR
 var errorMessage = null;
 var newUser = null;
 var someProp; // bad code
+// --------------------------------------------------------------
