@@ -1,6 +1,6 @@
 # Learn TypeScript - Full Course for Beginners
 
-Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
+Alexander Kochergin Youtube course https://www.youtube.com/playlist?list=PLEjh-YiSBCDJcayJNll1NjCOKMcIO4L0T
 
 ## Notes
 
