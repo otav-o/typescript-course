@@ -2,8 +2,6 @@
 
 Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
-
-
 ## Notes
 
 - `npm install -g typescript-language-server`
@@ -82,6 +80,58 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
 
   - Type aliases
 
-    - Types and Interfaces always start with capital letter  
+    - Types and Interfaces always start with capital letter
 
-    
+- Any, never, void, unknown
+
+  - Void: a set of undefined and null
+
+    - ```ts
+      const doSomething = (): void => {
+          console.log('Hi');
+      }
+      
+      let foo: void = null;
+      foo = undefined;
+      ```
+
+  - Any: Turns off typescript check. Should be avoided.
+
+    - ```ts
+      let foo2: any = "foo";
+      console.log(foo2.hi());
+      ```
+
+  - Never: function that does not reach its end
+
+    - ```ts
+      const doSomething2 = (): never => {
+          console.log("Hi hi");
+          throw "never";
+      }
+      ```
+
+  - Unknown: as any, you can assign to this type any value.
+
+    - ```ts
+      let vAny: any = 10;
+      let vUnknown: unknown = 10;
+      
+      let s1: string = vAny;
+      console.log(vAny.foo());
+      
+      // let s2: string = vUnknown; // wrong
+      let s2: string = vUnknown as string; // correct
+      ```
+
+  - Type Assertion
+
+    - ```ts
+      let s3: string = vUnknown as string;
+      let pageNumber: string = '1';
+      let numericPageNumber2: number = pageNumber as unknown as number; 
+      ```
+
+      
+
+  

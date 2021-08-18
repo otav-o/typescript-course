@@ -36,3 +36,36 @@ var errorMessage = null;
 var newUser = null;
 var someProp; // bad code
 // --------------------------------------------------------------
+// VOID: only for functions
+var doSomethingNew = function () {
+    console.log('Hi');
+};
+// void is a set of undefined and null
+var foo = null; // nosense
+foo = undefined;
+// --------------------------------------------------------------
+// ANY: turns off typescript type check
+// Should be avoided
+var foo2 = "foo";
+console.log(foo2.hi());
+// --------------------------------------------------------------
+// NEVER: function that does not reach its end
+var doSomething2 = function () {
+    console.log("Hi hi");
+    throw "never";
+};
+// --------------------------------------------------------------
+// UNKNOWN: similar to any
+var vAny = 10;
+var vUnknown = 10;
+var s1 = vAny; // any: typescript doesnt care and you can assign any value
+// let s2: string = vUnknown; // type unknown is not assignable to type string (without as);
+// We can't assign unknown to another type (but any so).
+console.log(vAny.foo());
+// console.log(vUnknown.foo());
+// --------------------------------------------------------------
+// TYPE ASSERTION (convertion)
+var s3 = vUnknown;
+var pageNumber = '1';
+// let numericPageNumber: number = pageNumber as number;
+var numericPageNumber2 = pageNumber; // type assertion

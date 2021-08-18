@@ -74,3 +74,43 @@ let newUser: UserInterface2 | null = null;
 let someProp: string | number | null | undefined | string[] | object; // bad code
 
 // --------------------------------------------------------------
+// VOID: only for functions
+const doSomethingNew = (): void => {
+  console.log('Hi');
+}
+
+// void is a set of undefined and null
+let foo: void = null; // nosense
+foo = undefined;
+
+// --------------------------------------------------------------
+// ANY: turns off typescript type check
+// Should be avoided
+let foo2: any = "foo";
+console.log(foo2.hi());
+
+// --------------------------------------------------------------
+// NEVER: function that does not reach its end
+const doSomething2 = (): never => {
+  console.log("Hi hi");
+  throw "never";
+}
+
+// --------------------------------------------------------------
+// UNKNOWN: similar to any
+let vAny: any = 10;
+let vUnknown: unknown = 10;
+
+let s1: string = vAny; // any: typescript doesnt care and you can assign any value
+// let s2: string = vUnknown; // type unknown is not assignable to type string (without as);
+// We can't assign unknown to another type (but any so).
+
+console.log(vAny.foo());
+// console.log(vUnknown.foo());
+
+// --------------------------------------------------------------
+// TYPE ASSERTION (convertion)
+let s3: string = vUnknown as string;
+let pageNumber: string = '1';
+// let numericPageNumber: number = pageNumber as number;
+let numericPageNumber2: number = pageNumber as unknown as number; // type assertion
