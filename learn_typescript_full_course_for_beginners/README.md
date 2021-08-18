@@ -142,6 +142,10 @@ Alexander Kochergin Youtube course https://www.youtube.com/MonsterlessonsAcademy
     const target = event.target as HTMLInputElement;
     ```
 
-    
+- Working with classes
+
+  - Classes are sugar around prototypes.
+
+  
 
   

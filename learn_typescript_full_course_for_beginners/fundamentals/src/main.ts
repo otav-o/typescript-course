@@ -127,3 +127,49 @@ specificElement.addEventListener('Blur', (event) => {
   const target = event.target as HTMLInputElement;
   console.log(target.value);
 }); // Event is also the most generic possible in events
+
+// --------------------------------------------------------------
+// CLASSES 
+
+class User implements UserInterface3 {
+  private firstName: string;
+  private lastName: string;
+  readonly unchangableName: string;
+  static readonly maxAge = 50;
+
+  constructor(firstName: string, lasName: string) {
+    this.firstName = firstName;
+    this.lastName = lasName;
+  }
+
+  getFullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+
+const userObj = new User('Otávio', 'Dioscânio');
+console.log(userObj.getFullName()); // everything is public by default
+// public, private, protected keywords
+// readonly, constructor, static property/method
+// extends, implements (very similar to Java)
+
+interface UserInterface3 {
+  getFullName(): string;
+}
+
+console.log(User.maxAge);
+
+class Admin extends User {
+  private editor: string;
+
+  setEditor(editor: string): void {
+    this.editor = editor;
+  }
+
+  getEditor(): string {
+    return this.editor;
+  }
+}
+
+const admin = new Admin('Name', 'Surname');
+console.log(admin.unchangableName);
